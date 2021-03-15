@@ -1,0 +1,100 @@
+<div class="container p5" *ngIf="visibilidadeTabela">
+    <div class="border border-light rounded p-5">
+        <div class="center">
+            <h1>Lista de Tarefas</h1>
+        </div>
+      <div class="col col-lg-2" style="padding-left: 0px;">
+        <button type="button" class="btn btn-sm btn-outline-secondary" (click)="exibirFormularioCadastro()">Nova
+          Tarefa</button>
+      </div>
+      <hr />
+      
+      <table class="table table-striped table-hover table-sm" *ngIf="tarefas">
+        <tr class="thread-light">
+          <th>Título</th>
+          <th>Grupo</th>
+          <th>Situação</th>
+          <th>Descricao</th>
+        </tr>
+        <tr *ngFor="let tarefa of tarefas">
+          <td style="text-transform: uppercase;">{{tarefa.titulo}}</td>
+          <td style="text-transform: uppercase;">{{tarefa.grupo}}</td>
+          <td style="text-transform: uppercase;">{{tarefa.situacao}}</td>
+          <td style="text-transform: uppercase;">{{tarefa.descricao}}</td>
+          <td>
+            <button type="button" class="btn btn-sm btn-outline-info"
+              (click)="exibirFormularioAtualizacao(tarefa.tarefaId)"
+              style="margin-right: 10px!important;">Atualizar</button>
+            <button type="button" class="btn btn-sm btn-outline-danger"
+              (click)="ExibirConfirmacaoExclusao(tarefa.tarefaId, tarefa.titulo, conteudoModal)">Excluir</button>
+          </td>
+        </tr>
+      </table>
+  
+    </div>
+  </div>
+  
+  
+  <div class="container p5" *ngIf="visibilidadeFormulario">
+    <div class="row">
+      <div class="col-6 border border-light rounded p-5 shadow" *ngIf="formulario">
+        <h6>{{tituloFormulario}}</h6>
+        <hr>
+        <form [formGroup]="formulario" (ngSubmit)="EnviarFormulario()" > 
+          <div class="form-group">
+            <label for="">Título:</label>
+            <!-- formControlName nome do campo -->
+            <input type="text" class="form-control form-control-sm" formControlName="titulo" style="text-transform: uppercase;">
+          </div>
+          <div class="form-group">
+            <label for="">Descrição:</label>
+            <!-- formControlName nome do campo -->
+            <input type="text" class="form-control form-control-sm" formControlName="descricao" style="text-transform: uppercase;">
+          </div>
+          <div class="form-group">
+            <label for="">Grupo:</label>
+            <!-- formControlName nome do campo -->
+            <input type="text" class="form-control form-control-sm" formControlName="grupo" style="text-transform: uppercase;">
+          </div>
+          <div class="form-group">
+            <label for="">Situação:</label>
+            <!-- formControlName nome do campo -->
+            <input type="text" class="form-control form-control-sm" formControlName="situacao" style="text-transform: uppercase;">
+          </div>
+          <div class="form-group">
+            <label for="">Data:</label>
+            <!-- formControlName nome do campo -->
+            <input type="date" class="form-control form-control-sm" formControlName="dataTarefa">
+          </div>
+          <div class="" style="margin-top: 20px;">
+            <div class="row">
+              <div class="col col-lg-2 mr-md-3">
+                <button type="submit" class="btn btn-sm btn-outline-success">Salvar</button>
+              </div>
+  
+              <div class="col col-lg-2 mr-md-3">
+                <button type="button" class="btn btn-sm btn-outline-secondary" (click)="Voltar()">Voltar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #conteudoModal>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Confirmação de Exclusão</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       Tem certeza que deseja excluir: <strong>{{titulo}}</strong>?
+      </div>
+  
+      <div class="modal-footer">
+          <button type="button" class="btn btn-light" (click)="modalRef.hide()">Não</button>
+          <button type="button" class="btn btn-outline-danger" (click)="ExcluirTarefa(tarefaId)">Sim</button>
+      </div>
+    </ng-template>

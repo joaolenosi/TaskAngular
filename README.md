@@ -1,12 +1,12 @@
 
 
 # TaskAngular
-O projeto **TaskAngular** foi desenolvido com Angular 11 e .Net Core Web API.
+Projeto para o desáfio de desenvolver um simples todolist em Angular 11 e consumindo uma API.Net Core.
 
 
 O projeto foi segmentado em 2 camadas:
 
-* **Backend**: C#, .Net Core Web API 
+* **Backend**:  .Net Core Web API 
 * **Frontend**: Angular, Bootstrap
 
 

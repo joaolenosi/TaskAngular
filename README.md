@@ -1,7 +1,8 @@
 
 
 # TaskAngular
-Projeto para o desáfio de desenvolver um simples todolist em Angular 11 e consumindo uma API.Net Core.
+Desáfio: criação de uma aplicação SPA usando Angular e Consumindo uma API.Net Core.
+Projeto desenvolvido utilizando Angular 11 e consumindo uma API.Net Core.
 
 
 O projeto foi segmentado em 2 camadas:
